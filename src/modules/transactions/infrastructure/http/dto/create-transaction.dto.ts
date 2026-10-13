@@ -1,4 +1,4 @@
-import { IsString, IsNumber, IsOptional, IsNotEmpty, IsPositive, Min } from 'class-validator';
+import { IsString, IsNumber, IsOptional, IsNotEmpty, IsPositive } from 'class-validator';
 
 export class CreateTransactionDto {
 

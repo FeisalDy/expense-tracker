@@ -7,11 +7,18 @@ import {
 } from './infrastructure/persistence/schemas/transaction.schema.js';
 import { TransactionsController } from './infrastructure/http/transactions.controller.js';
 import { CreateTransactionHandler } from './application/commands/create-transaction.handler.js';
+import { UpdateTransactionHandler } from './application/commands/update-transaction.handler.js';
+import { DeleteTransactionHandler } from './application/commands/delete-transaction.handler.js';
 import { TRANSACTION_REPOSITORY } from './domain/transaction.repository.js';
 import { MongooseTransactionRepository } from './infrastructure/persistence/mongoose-transaction.repository.js';
 import { GetTransactionHandler } from './application/queries/get-transaction.query.js';
 
-const CommandHandlers = [CreateTransactionHandler, GetTransactionHandler];
+const CommandHandlers = [
+    CreateTransactionHandler,
+    UpdateTransactionHandler,
+    DeleteTransactionHandler,
+    GetTransactionHandler,
+];
 @Module({
     imports: [
         CqrsModule,

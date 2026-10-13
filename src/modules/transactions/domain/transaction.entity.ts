@@ -16,4 +16,18 @@ export class Transaction {
     ){
         return new Transaction(id, userId, amount, description, createdAt);
     }
+
+    update(
+        amount?: number,
+        description?: string | null,
+        userId?: string,
+    ): Transaction {
+        return new Transaction(
+            this.id,
+            userId ?? this.userId,
+            amount ?? this.amount,
+            description !== undefined ? description : this.description,
+            this.createdAt,
+        );
+    }
 }
