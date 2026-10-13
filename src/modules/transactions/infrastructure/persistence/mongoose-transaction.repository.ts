@@ -15,8 +15,8 @@ export class MongooseTransactionRepository implements TransactionRepository {
         private transactionModel: Model<TransactionSchemaModel>,
     ) {}
 
-    async getByUserId(userId: string) {
-        const records = await this.transactionModel.find({ userId }).exec();
+    async get() {
+        const records = await this.transactionModel.find().exec();
 
         return records.map((record) => this.#toDomain(record));
     }
@@ -30,6 +30,15 @@ export class MongooseTransactionRepository implements TransactionRepository {
     async save(transaction: Transaction) {
         const record = this.#toSchema(transaction);
         await record.save();
+    }
+
+    async update(transaction: Transaction) {
+        const record = this.#toSchema(transaction);
+        await this.transactionModel.findByIdAndUpdate(transaction.id, record).exec();
+    }
+
+    async delete(id: string) {
+        await this.transactionModel.findByIdAndDelete(id).exec();
     }
 
     #toDomain(transaction: TransactionDocument): Transaction {

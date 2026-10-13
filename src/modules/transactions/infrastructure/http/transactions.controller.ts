@@ -11,6 +11,15 @@ export class TransactionsController {
         private readonly queryBus: QueryBus,
     ) {}
 
+    @Get()
+    async getTransactions() {
+        const transactions = await this.queryBus.execute(
+            new GetTransactionQuery(),
+        );
+
+        return transactions;
+    }
+
     @Post()
     @HttpCode(201)
     async createTransaction(
@@ -26,14 +35,5 @@ export class TransactionsController {
         );
 
         return { id };
-    }
-
-    @Get(':userId')
-    async getTransactions(@Param('userId') userId: string) {
-        const transactions = await this.queryBus.execute(
-            new GetTransactionQuery(userId),
-        );
-
-        return transactions;
     }
 }

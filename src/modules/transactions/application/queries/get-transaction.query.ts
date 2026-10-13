@@ -14,7 +14,7 @@ export class GetTransactionHandler implements IQueryHandler<GetTransactionQuery>
         private readonly transactionRepository: TransactionRepository,
     ) {}
 
-    async execute(query: GetTransactionQuery): Promise<Transaction[]> {
-        return this.transactionRepository.getByUserId(query.userId);
+    async execute(): Promise<Transaction[]> {
+        return this.transactionRepository.get();
     }
 }
