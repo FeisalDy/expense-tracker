@@ -1,0 +1,4 @@
+- Prefer `unknown` over `any` — it forces type narrowing before use and catches bugs at compile time.
+- Only write tests when resolving a specific user issue or upon explicit request.
+- Throw `NotFoundException`, `BadRequestException`, and `ForbiddenException` from `@nestjs/common` — never send raw error responses from controllers.
+- Follow existing code style and formatting conventions if existing code is not violating rules or violating best practices. if you are unsure, follow the best practices in the NestJS documentation.
