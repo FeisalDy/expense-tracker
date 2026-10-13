@@ -9,5 +9,8 @@ export default defineConfig({
     globals: true,
     root: './',
     include: ['**/*.spec.ts'],
+    env: {
+      GEMINI_API_KEY: 'test-api-key',
+    },
   },
 });

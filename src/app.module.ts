@@ -3,6 +3,7 @@ import { createObserveModule } from '@nestjs/observe';
 import { AppController } from './app.controller.js';
 import { AppService } from './app.service.js';
 import { TransactionsModule } from './modules/transactions/transactions.module.js';
+import { AiModule } from './modules/ai/ai.module.js';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import databaseConfig from './config/database.config.js';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -25,6 +26,7 @@ export const { ObserveModule, ObserveInstrument } = createObserveModule();
             load: [databaseConfig],
         }),
         TransactionsModule,
+        AiModule,
         MongooseModule.forRootAsync({
             inject: [ConfigService], // Inject ConfigService here
             useFactory: async (configService: ConfigService) => ({
